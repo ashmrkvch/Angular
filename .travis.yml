@@ -29,9 +29,10 @@ jobs:
          if: branch = master OR branch = dev
          script: npm run build
 
-  deploy:
-  provider: gae
-  project: airy-ceremony-274018  
-  keyfile: airy-ceremony-274018-a8e7ff162b93.json
-  verbosity: debug
-  on: master      
+deploy:
+    provider: gae
+    project: airy-ceremony-274018  
+    keyfile: airy-ceremony-274018-a8e7ff162b93.json
+    verbosity: debug
+    on: master      
+
