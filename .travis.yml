@@ -15,9 +15,8 @@ services:
 jobs:
     include:
        - stage: build docker image
-         if: $TRAVIS_PULL_REQUEST = true
          script:
-          - 'if [ "${TRAVIS_PULL_REQUEST}" = "true" ];
+          - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
           then surge ./ test.sh
             fi'
        - stage: lint
