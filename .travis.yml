@@ -17,11 +17,9 @@ jobs:
        - stage: build docker image
          if: $TRAVIS_PULL_REQUEST = true
          script:
-            - docker build -t travis-ci-build-stages-demo .
-            - docker images
-            - docker tag travis-ci-build-stages-demo travis-ci-build-stages-demo       
-            - docker run -d --rm travis-ci-build-stages-demo
-
+          - 'if [ "${TRAVIS_PULL_REQUEST}" = "true" ];
+          then surge ./ test.sh
+            fi'
        - stage: lint
          if: branch = master OR branch = dev
          script: npm run lint
