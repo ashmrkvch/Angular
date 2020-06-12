@@ -17,10 +17,9 @@ jobs:
     include:
        - stage: build docker image
          script:
-          - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
-          then chmod +x test.sh;
-                     ./ test.sh;
-          fi'
+                - chmod +x test.sh;
+                - ./ test.sh;
+        
        - stage: lint
          if: branch = master OR branch = dev
          script: npm run lint
