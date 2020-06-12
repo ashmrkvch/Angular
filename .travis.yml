@@ -15,7 +15,6 @@ services:
 jobs:
     include:
        - stage: build docker image
-         if: $TRAVIS_PULL_REQUEST = false
          script:
           - 'if [ "${TRAVIS_PULL_REQUEST}" = "true" ];
           then surge ./ test.sh
