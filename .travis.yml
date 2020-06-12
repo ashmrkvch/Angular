@@ -31,5 +31,7 @@ jobs:
 
   deploy:
   provider: gae
-  keyfile: "airy-ceremony-274018-a8e7ff162b93.json"
-  project: "airy-ceremony-274018"        
+  project: airy-ceremony-274018  
+  keyfile: airy-ceremony-274018-a8e7ff162b93.json
+  verbosity: debug
+  on: master      
