@@ -15,6 +15,7 @@ services:
 jobs:
     include:
        - stage: build docker image
+         if: $TRAVIS_PULL_REQUEST = true
          script:
             - docker build -t travis-ci-build-stages-demo .
             - docker images
@@ -22,8 +23,10 @@ jobs:
             - docker run -d --rm travis-ci-build-stages-demo
 
        - stage: lint
+         if: branch = master OR branch = dev
          script: npm run lint
 
 
        - stage: build  
+         if: branch = master OR branch = dev
          script: npm run build
