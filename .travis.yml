@@ -16,9 +16,10 @@ jobs:
     include:
        - stage: build docker image
          script:
-          - 'if [ "${TRAVIS_PULL_REQUEST}" = "true" ];
-          then surge ./ test.sh;
-            fi'
+          - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
+          then chmod +x test.sh;
+                     ./ test.sh;
+          fi'
        - stage: lint
          if: branch = master OR branch = dev
          script: npm run lint
@@ -27,3 +28,8 @@ jobs:
        - stage: build  
          if: branch = master OR branch = dev
          script: npm run build
+
+  deploy:
+  provider: gae
+  keyfile: "airy-ceremony-274018-a8e7ff162b93.json"
+  project: "airy-ceremony-274018"        
