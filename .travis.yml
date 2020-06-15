@@ -35,7 +35,7 @@ jobs:
           - echo $keyfile | base64 --decode -i > ${HOME}/studious-set-280411-db6dcfed0d74.json
           - gcloud auth activate-service-account --key-file ${HOME}/studious-set-280411-db6dcfed0d74.json
           - gcloud --quiet config set project studious-set-280411
-          - gcloud docker push gcr.io/studious-set-280411/travis-ci-build-stages-demo     
+          - gcloud docker -- push gcr.io/studious-set-280411/travis-ci-build-stages-demo
       
        - stage: lint
          if: branch = master OR branch = dev
