@@ -18,7 +18,7 @@ env:
     - GOOGLE_APPLICATION_CREDENTIALS = $keyfile
  #   - PROJECT_NAME_STG=<YOUR_PROJECT_NAME>
 
- before_deploy:
+before_deploy:
   - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; 
     then rm -rf $HOME/google-cloud-sdk; 
     export CLOUDSDK_CORE_DISABLE_PROMPTS=1; 
