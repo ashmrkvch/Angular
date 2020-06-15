@@ -16,11 +16,15 @@ services:
 jobs:
     include:
        - stage: build docker image
-         if: $TRAVIS_PULL_REQUEST = false 
+      
          script:
-          - chmod +x test.sh;
-          - ./ test.sh;
-
+          - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
+          then chmod +x test.sh;
+                     ./ test.sh;
+          fi'
+          - 'if [ "${TRAVIS_PULL_REQUEST}" = "true" ]; 
+              then echo "  ";
+              fi   '
        - stage: lint
          if: branch = master OR branch = dev
          script: npm run lint
@@ -29,6 +33,4 @@ jobs:
        - stage: build  
          if: branch = master OR branch = dev
          script: npm run build
-
-     
 
