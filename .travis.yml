@@ -29,7 +29,7 @@ before_install:
 jobs:
     include:
        - stage: build docker image
-      
+        if: branch = master OR branch = dev
          script:
           - 'if [ "${TRAVIS_PULL_REQUEST}" = "true" ];
           then chmod +x test.sh;
