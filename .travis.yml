@@ -16,7 +16,7 @@ services:
 env:
   global:
     - GOOGLE_APPLICATION_CREDENTIALS = $keyfile
-    - PROJECT_NAME_STG = studious-set-280411
+    - PROJECT_NAME_STG = "studious-set-280411"
 
 before_deploy:
   - 'if [ ! -d "$HOME/google-cloud-sdk/bin" ]; 
