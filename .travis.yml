@@ -18,7 +18,7 @@ jobs:
        - stage: build docker image
       
          script:
-          - 'if [ "${TRAVIS_PULL_REQUEST}" = "true ];
+          - 'if [ "${TRAVIS_PULL_REQUEST}" = "true" ];
           then chmod +x test.sh;
                      ./ test.sh;
           fi'
