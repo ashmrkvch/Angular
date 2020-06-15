@@ -37,7 +37,7 @@ jobs:
           - gcloud --quiet config set project studious-set-280411
           - gcloud docker push gcr.io/studious-set-280411/travis-ci-build-stages-demo     
       
-          - stage: lint
+       - stage: lint
          if: branch = master OR branch = dev
          script: npm run lint
 
