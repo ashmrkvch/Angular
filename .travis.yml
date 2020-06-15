@@ -16,8 +16,8 @@ services:
 jobs:
     include:
        - stage: build docker image
-       if: $TRAVIS_PULL_REQUEST = false 
-       script:
+         if: $TRAVIS_PULL_REQUEST = false 
+         script:
           - chmod +x test.sh;
           - ./ test.sh;
 
@@ -30,10 +30,5 @@ jobs:
          if: branch = master OR branch = dev
          script: npm run build
 
-#deploy:
- #   provider: gae
-  #  project: airy-ceremony-274018  
-   # keyfile: $keyfile
-    #verbosity: debug
-    #on: master      
+     
 
