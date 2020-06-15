@@ -16,11 +16,11 @@ services:
 jobs:
     include:
        - stage: build docker image
-         script:
-          - 'if [ "${TRAVIS_PULL_REQUEST}" = "false" ];
-          then chmod +x test.sh;
-                     ./ test.sh;
-          fi'
+       if: $TRAVIS_PULL_REQUEST = false 
+       script:
+          - chmod +x test.sh;
+          - ./ test.sh;
+
        - stage: lint
          if: branch = master OR branch = dev
          script: npm run lint
@@ -30,10 +30,10 @@ jobs:
          if: branch = master OR branch = dev
          script: npm run build
 
-deploy:
-    provider: gae
-    project: airy-ceremony-274018  
-    keyfile: $keyfile
-    verbosity: debug
-    on: master      
+#deploy:
+ #   provider: gae
+  #  project: airy-ceremony-274018  
+   # keyfile: $keyfile
+    #verbosity: debug
+    #on: master      
 
