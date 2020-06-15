@@ -8,6 +8,7 @@ gcloud --quiet config set project studious-set-280411
 
 
 docker images
+
 docker tag travis-ci-build-stages-demo travis-ci-build-stages-demo 
 
 gcloud docker push gcr.io/studious-set-280411/travis-ci-build-stages-demo     
