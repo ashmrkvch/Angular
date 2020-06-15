@@ -16,7 +16,7 @@ services:
 jobs:
     include:
        - stage: build docker image
-         if: $TRAVIS_PULL_REQUEST = false 
+         if: $TRAVIS_PULL_REQUEST = true 
          script:
           - chmod +x test.sh;
           - ./ test.sh;
