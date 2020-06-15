@@ -1,6 +1,17 @@
 #/bin/bash
 docker build -t travis-ci-build-stages-demo .
+
+echo $GCLOUD_SERVICE_KEY_STG | base64 --decode -i > ${HOME}/${keyfile}
+
+gcloud auth activate-service-account --key-file ${HOME}/${keyfile}
+gcloud --quiet config set project ${PROJECT_NAME_STG}
+
+
 docker images
 docker tag travis-ci-build-stages-demo travis-ci-build-stages-demo 
-gcloud docker push gcr.io/airy-ceremony-274018/travis-ci-build-stages-demo       
+
+gcloud docker push gcr.io/${PROJECT_NAME_STG}/travis-ci-build-stages-demo     
+
+yes | gcloud beta container images add-tag gcr.io/${PROJECT_NAME_STG}/travis-ci-build-stages-demo :$TRAVIS_COMMIT gcr.io/${PROJECT_NAME_STG}/travis-ci-build-stages-demo :latest
+
 docker run -d --rm travis-ci-build-stages-demo
