@@ -5,7 +5,4 @@ gcloud --quiet config set project studious-set-280411
 gcloud docker -- push gcr.io/studious-set-280411/travis-ci-build-stages-demo
 yes | gcloud compute instances create-with-container my-instance \
           --zone us-east1-b \ 
-          --container-image gcr.io/studious-set-280411/travis-ci-build-stages-demo
-      
-
-
+          --container-image=gcr.io/studious-set-280411/travis-ci-build-stages-demo
