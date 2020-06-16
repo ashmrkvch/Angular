@@ -46,6 +46,7 @@ jobs:
           if: branch = master OR branch = dev
           script: npm run lint
 
+          
 
        - stage: build  
          if: branch = master OR branch = dev
