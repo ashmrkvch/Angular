@@ -5,3 +5,4 @@ gcloud --quiet config set project studious-set-280411
 gcloud docker -- push gcr.io/studious-set-280411/travis-ci-build-stages-demo
 yes | gcloud compute instances create-with-container my-instance  --zone us-east1-b --container-image=gcr.io/studious-set-280411/travis-ci-build-stages-demo --tags=http-server
 gcloud compute firewall-rules create "http-rule" --allow=tcp:80 --source-ranges="0.0.0.0/0" --target-tags=http-server
+gcloud compute images update --clear-labels
