@@ -29,7 +29,6 @@ before_install:
 jobs:
     include:
        - stage: build docker image
-         if: branch = master OR branch = dev
          script:
           - docker build -t gcr.io/studious-set-280411/travis-ci-build-stages-demo .
           - echo $keyfile | base64 --decode -i > ${HOME}/studious-set-280411-db6dcfed0d74.json
