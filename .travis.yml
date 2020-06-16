@@ -19,11 +19,9 @@ env:
     - PROJECT_NAME_STG = "studious-set-280411"
 
 before_install:
-  - 'if [ ! -d "$HOME/google-cloud-sdk/bin" ]; 
-    then rm -rf $HOME/google-cloud-sdk; 
-    export CLOUDSDK_CORE_DISABLE_PROMPTS=1; 
-    curl https://sdk.cloud.google.com | bash;
-     fi'
+  - - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export
+      CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash >/dev/null;
+      fi
   - source /home/travis/google-cloud-sdk/path.bash.inc
   - gcloud --quiet version
   - gcloud --quiet components update
@@ -31,16 +29,22 @@ before_install:
 jobs:
     include:
        - stage: build docker image
-      
-         script:
-          - 'if [ "${TRAVIS_PULL_REQUEST}" = "true" ];
-          then chmod +x test.sh;
-                     ./ test.sh;
-          fi'
-
-       - stage: lint
          if: branch = master OR branch = dev
-         script: npm run lint
+         script:
+          - docker build -t gcr.io/studious-set-280411/travis-ci-build-stages-demo .
+          - echo $keyfile | base64 --decode -i > ${HOME}/studious-set-280411-db6dcfed0d74.json
+          - gcloud auth activate-service-account --key-file ${HOME}/studious-set-280411-db6dcfed0d74.json
+          - gcloud --quiet config set project studious-set-280411
+          - gcloud docker -- push gcr.io/studious-set-280411/travis-ci-build-stages-demo
+          - gcloud beta compute instances create my-instance \
+            --project=studious-set-280411 \
+            --zone us-east1-b \
+            --source-machine-image projects/studious-set-280411/global/machineImages/travis-ci-build-stages-demo \
+            --service-account travis@studious-set-280411.iam.gserviceaccount.com
+      
+       - stage: lint
+          if: branch = master OR branch = dev
+          script: npm run lint
 
 
        - stage: build  
