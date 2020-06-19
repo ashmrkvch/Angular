@@ -29,18 +29,17 @@ before_install:
 
 jobs:
     include:
-       - stage: build docker image
-         script:
-          - chmod +x test.sh;
-          - ./test.sh;  
+        - stage: build docker image
+          script:
+           - chmod +x test.sh;
+           - ./test.sh;  
    
-       - stage: lint
+        - stage: lint
           if: branch = master OR branch = dev
           script: npm run lint
-
-
-
-       - stage: build  
-         if: branch = master OR branch = dev
-         script: npm run build
+ 
+ 
+        - stage: build  
+          if: branch = master OR branch = dev
+          script: npm run build
 
