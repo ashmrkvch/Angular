@@ -18,7 +18,7 @@ before_install:
   -in id_rsa.pub.enc -out ./id_rsa.pub -d
 - eval "$(ssh-agent -s)"
 - chmod 600 ./id_rsa.pub
-- 123456 | ssh-add ./id_rsa.pub
+- ssh-add -K ./id_rsa.pub
 - if [ ! -d "$HOME/google-cloud-sdk/bin" ]; then rm -rf $HOME/google-cloud-sdk; export
   CLOUDSDK_CORE_DISABLE_PROMPTS=1; curl https://sdk.cloud.google.com | bash >/dev/null;
   fi
