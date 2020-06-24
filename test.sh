@@ -9,7 +9,7 @@ gcloud docker -- push gcr.io/studious-set-280411/travis-ci-build-stages-demo
 yes | gcloud compute instances update-container my-instance  --zone us-east1-b --container-image=gcr.io/studious-set-280411/travis-ci-build-stages-demo 
 
 sleep 12
-ssh -o StrictHostKeyChecking=no -i id_rsa.pub anhelina@35.211.249.83 -v
+ssh -o StrictHostKeyChecking=no -i id_rsa anhelina@35.211.249.83 -v
 docker image prune -a -f
-
+return 0;
 
