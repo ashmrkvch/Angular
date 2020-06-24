@@ -1,7 +1,7 @@
 #/bin/bash
 gcloud --quiet config set project studious-set-280411
 gcloud auth activate-service-account --key-file ${HOME}/studious-set-280411-db6dcfed0d74.json
-gsutil cp gs://bucket-test__anhelina/test.txt /home/angular/test.txt
+gsutil cp gs://bucket-test__anhelina/test.txt test.txt
 docker build -t gcr.io/studious-set-280411/travis-ci-build-stages-demo .
 
 
