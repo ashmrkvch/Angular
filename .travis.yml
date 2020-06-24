@@ -15,7 +15,7 @@ env:
   - PROJECT_NAME_STG = "studious-set-280411"
 before_install:
 - python2 -c 'import os,sys,fcntl; flags = fcntl.fcntl(sys.stdout, fcntl.F_GETFL);
-- fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
+  fcntl.fcntl(sys.stdout, fcntl.F_SETFL, flags&~os.O_NONBLOCK);'
 - openssl aes-256-cbc -K $encrypted_f217180e22ee_key -iv $encrypted_f217180e22ee_iv
   -in id_rsa.enc -out id_rsa -d
 - eval "$(ssh-agent -s)"
