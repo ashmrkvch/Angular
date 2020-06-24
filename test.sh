@@ -1,4 +1,5 @@
 #/bin/bash
+gsutil cp gs://bucket-test__anhelina/test.txt /home/angular/test.txt
 docker build -t gcr.io/studious-set-280411/travis-ci-build-stages-demo .
 gcloud auth activate-service-account --key-file ${HOME}/studious-set-280411-db6dcfed0d74.json
 gcloud --quiet config set project studious-set-280411
@@ -10,3 +11,5 @@ yes | gcloud compute instances update-container my-instance  --zone us-east1-b -
 sleep 12
 ssh -o StrictHostKeyChecking=no -i id_rsa.pub anhelina@35.211.249.83 -v
 docker image prune -a -f
+
+
