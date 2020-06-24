@@ -9,6 +9,7 @@ cache:
   - "$HOME/google-cloud-sdk/"
 services:
 - docker
+- python 3.5
 env:
   global:
   - GOOGLE_APPLICATION_CREDENTIALS = $keyfile
