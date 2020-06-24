@@ -3,13 +3,14 @@ sudo: true
 language: node_js
 node_js:
 - '12'
+python:
+- '3.5'
 cache:
   directories:
   - "./node_modules"
   - "$HOME/google-cloud-sdk/"
 services:
 - docker
-- python 3.5
 env:
   global:
   - GOOGLE_APPLICATION_CREDENTIALS = $keyfile
