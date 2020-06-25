@@ -1,6 +1,7 @@
 #/bin/bash
-gcloud --quiet config set account angelina.shemrikovych@valor-software.com
+
 gcloud --quiet config set project studious-set-280411
+gcloud auth activate-service-account --key-file $keyfile
 gcloud --quiet config set container/cluster $CLUSTER_NAME
 gcloud --quiet container clusters get-credentials $CLUSTER_NAME
 gcloud auth activate-service-account --key-file ${HOME}/studious-set-280411-db6dcfed0d74.json
