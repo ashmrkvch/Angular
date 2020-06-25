@@ -16,7 +16,7 @@ gcloud docker -- push gcr.io/studious-set-280411/travis-ci-build-stages-demo
 kubectl apply -f pod-test.yaml
 sleep 12
 kubectl get pod test-travis
-kubectl exec -ti test-travis -- /bin/sh  
+kubectl exec -ti test-travis -- docker image prune -a -f  
 # ssh -o StrictHostKeyChecking=no -i id_rsa anhelina@35.211.249.83 -v
-docker image prune -a -f
+#docker image prune -a -f
 exit
