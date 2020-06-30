@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: angular-stage-service
+  labels:
+    purpose: angular-stage
+  annotations:
+    cloud.google.com/neg: '{"ingress": true}'
+    beta.cloud.google.com/backend-config: '{"ports": {"80":"angular-stage-backendconfig"}}'
+spec:
+  type: NodePort
+  selector:
+    purpose: angular-stage
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 80

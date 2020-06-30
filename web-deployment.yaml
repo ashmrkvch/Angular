@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: angular-stage
+spec:
+  selector:
+    matchLabels:
+      purpose: angular-stage
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        purpose: angular-stage
+    spec:
+      containers:
+      - name: angular-stage
+        image: gcr.io/studious-set-280411/travis-ci-build-stages-demo 
+      

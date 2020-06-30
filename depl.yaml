@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-kubernetes-deployment
+spec:
+  selector:
+    matchLabels:
+      greeting: hello
+      department: kubernetes
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        greeting: hello
+        department: kubernetes
+    spec:
+      containers:
+      - name: hello-again
+        image: "gcr.io/studious-set-280411/travis-ci-build-stages-demo"
+        env:
+        - name: "PORT"
+          value: "8080"
