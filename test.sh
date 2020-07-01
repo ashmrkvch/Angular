@@ -18,8 +18,8 @@ kubectl apply -f web-deployment.yaml
 kubectl apply -f backend.yaml
 kubectl apply -f service.yaml
 kubectl apply -f ingress.yaml
-sleep 100
-curl http://34.98.86.43/
+#sleep 100
+#curl http://34.98.86.43/
 #kubectl get pod test-travis
 #kubectl exec -ti test-travis --  /bin/sh 
 # ssh -o StrictHostKeyChecking=no -i id_rsa anhelina@35.211.249.83 -v

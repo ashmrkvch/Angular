@@ -14,5 +14,7 @@ spec:
     spec:
       containers:
       - name: angular-stage
-        image: gcr.io/studious-set-280411/travis-ci-build-stages-demo 
+        image: gcr.io/studious-set-280411/travis-ci-build-stages-demo
+        ports:
+        - containerPort: 80 
       
