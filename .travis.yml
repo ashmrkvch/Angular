@@ -31,6 +31,8 @@ before_install:
 - gcloud --quiet components update
 - gcloud --quiet components update kubectl
 - echo $keyfile | base64 --decode -i > ${HOME}/studious-set-280411-db6dcfed0d74.json
+before_deploy:
+- echo $keyfile | base64 --decode -i > ${HOME}/studious-set-280411-db6dcfed0d74.json  
 jobs:
   include:  
   - stage: build docker image
