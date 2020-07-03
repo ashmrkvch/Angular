@@ -7,8 +7,8 @@ gcloud --quiet config set compute/zone ${CLOUDSDK_COMPUTE_ZONE}
 gcloud --quiet container clusters get-credentials $CLUSTER_NAME
 
 gsutil cp index.html gs://anhelina-storage/index.html
-docker build -t gcr.io/studious-set-280411/travis-ci-build-stages-demo .
-gcloud docker -- push gcr.io/studious-set-280411/travis-ci-build-stages-demo
+#docker build -t gcr.io/studious-set-280411/travis-ci-build-stages-demo .
+#gcloud docker -- push gcr.io/studious-set-280411/travis-ci-build-stages-demo
 
 #yes | gcloud compute instances create-with-container my-instance  --zone us-east1-b --container-image=gcr.io/studious-set-280411/travis-ci-build-stages-demo --tags=http-server
 #gcloud compute firewall-rules create "http-rule" --allow=tcp:80 --source-ranges="0.0.0.0/0" --target-tags=http-server
