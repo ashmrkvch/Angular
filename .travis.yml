@@ -51,7 +51,7 @@ jobs:
     - "./db_prod.sh;"
     after_failure:
     - gcloud sql backups list --instance=$DB_INSTANCE_NAME_PROD | awk '{print $1}' |tail -1 >> ss.txt
-    - yes | gcloud sql backups restore $R --restore-instance=test  
+    - yes | gcloud sql backups restore $R --restore-instance=$DB_INSTANCE_NAME_PROD   
 deploy:
   provider: gcs
   key_file: ${HOME}/studious-set-280411-db6dcfed0d74.json
