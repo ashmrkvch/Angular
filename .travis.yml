@@ -46,7 +46,9 @@ jobs:
     if: branch = master OR branch = dev
     script: npm run build
   - stage: DB Dump
-    script: db_prod.sh
+    script: 
+    - chmod +x db_prod.sh;
+    - "/.db_prod.sh;"
     after_failure:
     - gcloud sql backups list --instance=test | awk '{print $1}' |tail -1 >> ss.txt
     - yes | gcloud sql backups restore $R --restore-instance=test  
