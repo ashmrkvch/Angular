@@ -22,4 +22,4 @@ jobs:
     - uses: mattes/gce-cloudsql-proxy-action@v1
       with:
         creds: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        instance: tonal-justice-314710:us-central1:proxy-test1
+        instance: tonal-justice-314710:us-central1:proxy-test
