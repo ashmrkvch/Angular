@@ -1,0 +1,25 @@
+name: Build and Deploy to GKE
+
+on:
+  push
+
+
+jobs:
+  setup-build-publish-deploy:
+    name: Setup, Build, Publish, and Deploy
+    runs-on: ubuntu-latest
+    environment: production
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    # Setup gcloud CLI
+    - uses: google-github-actions/setup-gcloud@v0.2.0
+      with:
+        service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        project_id: 	tonal-justice-314710
+    - uses: mattes/gce-cloudsql-proxy-action@v1
+      with:
+        creds: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
+        instance: tonal-justice-314710:us-central1:proxy-test1
