@@ -18,7 +18,7 @@ jobs:
     - uses: google-github-actions/setup-gcloud@v0.2.0
       with:
         service_account_key: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
-        project_id: 	tonal-justice-314710
+        project_id: tonal-justice-314710
     - uses: mattes/gce-cloudsql-proxy-action@v1
       with:
         creds: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
